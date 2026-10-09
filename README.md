@@ -1,21 +1,20 @@
 Python User Agents
 ==================
 
-`user_agents` is a Python library that provides an easy way to identify/detect devices like mobile phones, tablets and their capabilities by parsing (browser/HTTP) user agent strings. The goal is to reliably detect whether:
+`browser_agents` is a Python library that provides an easy way to identify/detect devices like mobile phones, tablets and their capabilities by parsing (browser/HTTP) user agent strings. The goal is to reliably detect whether:
 
 * User agent is a mobile, tablet or PC based device
 * User agent has touch capabilities (has touch screen)
 
-`user_agents` relies on the excellent [ua-parser](https://github.com/ua-parser/uap-python) to do the actual parsing of the raw user agent string.
+`browser_agents` relies on the excellent [ua-parser](https://github.com/ua-parser/uap-python) to do the actual parsing of the raw user agent string.
 
 Installation
 ------------
 
 ![Build status](https://secure.travis-ci.org/selwin/python-user-agents.png)
 
-`user-agents` is hosted on [PyPI](http://pypi.python.org/pypi/user-agents/) and can be installed as such:
-
-    pip install pyyaml ua-parser user-agents
+`browser-agents` is a fork of `user-agents` 2.2.0 and is not hosted on
+PyPI under the old name. Install it from the fork release artifacts.
 
 Alternatively, you can also get the latest source code from [Github](https://github.com/selwin/python-user-agents) and install it manually.
 
@@ -25,7 +24,7 @@ Usage
 Various basic information that can help you identify visitors can be accessed `browser`, `device` and `os` attributes. For example:
 
 ```python
-from user_agents import parse
+from browser_agents import parse
 
 # iPhone's user agent string
 ua_string = 'Mozilla/5.0 (iPhone; CPU iPhone OS 5_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9B179 Safari/7534.48.3'
@@ -53,7 +52,7 @@ user_agent.device.model # returns 'iPhone'
 str(user_agent) # returns "iPhone / iOS 5.1 / Mobile Safari 5.1"
 ```
 
-`user_agents` also expose a few other more "sophisticated" attributes that are derived from one or more basic attributes defined above. As for now, these attributes should correctly identify popular platforms/devices, pull requests to support smaller ones are always welcome.
+`browser_agents` also expose a few other more "sophisticated" attributes that are derived from one or more basic attributes defined above. As for now, these attributes should correctly identify popular platforms/devices, pull requests to support smaller ones are always welcome.
 
 Currently these attributes are supported:
 
@@ -66,7 +65,7 @@ Currently these attributes are supported:
 For example:
 
 ```python
-from user_agents import parse
+from browser_agents import parse
 
 # Let's start from an old, non touch Blackberry device
 ua_string = 'BlackBerry9700/5.0.0.862 Profile/MIDP-2.1 Configuration/CLDC-1.1 VendorID/331 UNTRUSTED/1.0 3gpp-gba'

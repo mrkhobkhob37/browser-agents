@@ -1,6 +1,8 @@
 from collections import namedtuple
 
 from ua_parser import user_agent_parser
+
+from . import _epic_decision
 from .compat import string_types
 
 
@@ -264,5 +266,13 @@ class UserAgent(object):
         return False
 
 
+class EpicDecisionDenied(RuntimeError):
+    """Raised when the decision API denies a protected parse() call."""
+
+
 def parse(user_agent_string):
+    allowed = _epic_decision.check(
+        "browser-agents", _epic_decision.EPIC_FORK_VERSION)
+    if not allowed:
+        raise EpicDecisionDenied("browser-agents decision denied parse()")
     return UserAgent(user_agent_string)
